@@ -7,25 +7,32 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <style>
       body {
         background: linear-gradient(45deg, #6a0dad, #000, #8000ff);
         animation: gradient 5s ease infinite;
-        will-change: background; /* Optimize background property */
-        background-attachment: fixed; /* Ensure the background stays fixed while scrolling */
+        will-change: background;
+        background-attachment: fixed;
         background-size: cover;
         transition: background-color 0.5s ease-in-out;
-      }
-
-      body {
         margin: 0;
         font-family: "Poppins", sans-serif;
-        background: linear-gradient(to bottom right, #6a0dad, #000);
         color: white;
         overflow-x: hidden;
+      }
+
+      @keyframes gradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
       }
 
       header {
@@ -55,7 +62,6 @@
         color: #a64dff;
       }
 
-      /* Social media icon styles */
       .social-links {
         margin-top: 2rem;
         display: flex;
@@ -71,7 +77,7 @@
 
       .social-icon:hover {
         transform: scale(1.2);
-        color: #a64dff; /* Add hover color effect */
+        color: #a64dff;
       }
 
       .social-icon i {
@@ -79,7 +85,7 @@
       }
 
       .social-icon:hover i {
-        transform: rotate(360deg); /* Rotate icons on hover */
+        transform: rotate(360deg);
       }
 
       .hero {
@@ -186,9 +192,64 @@
         background: rgba(255, 255, 255, 0.2);
       }
 
+      .project-card a {
+        color: white;
+        text-decoration: none; /* To remove the underline if you don't want it */
+      }
+
+      .project-card a:hover {
+        color: #dd95f1; /* Optional: Change the color on hover */
+      }
+
       .contact-form {
         max-width: 500px;
         margin: 0 auto;
+      }
+
+      /* Style for the about-content section */
+      .about-content {
+        display: flex; /* Use flexbox to align the image and text side by side */
+        align-items: center; /* Vertically align items */
+        justify-content: center; /* Center the items horizontally */
+        gap: 2rem; /* Space between image and text */
+        margin-top: 2rem;
+        flex-wrap: wrap; /* Allow wrapping in case of small screens */
+        text-align: center; /* Center text */
+        max-width: 1000px; /* Restrict the maximum width for better layout */
+        margin: 0 auto; /* Center the content horizontally */
+      }
+
+      /* Style for the about-image */
+      .about-image img {
+        width: 150px; /* Set a specific width for the image */
+        height: 150px; /* Set a specific height */
+        border-radius: 50%; /* Make the image circular */
+        object-fit: cover; /* Ensure the image covers the space without distortion */
+        border: 4px solid #cc35ff; /* Optional border to match the theme */
+      }
+
+      /* Style for the description-box */
+      .description-box {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        max-width: 600px; /* Adjust width for better layout */
+        margin: 1rem auto; /* Center the box horizontally with margin */
+        text-align: left; /* Align text to the left inside the box */
+      }
+
+      /* If you want a responsive design for small screens, adjust for them */
+      @media (max-width: 768px) {
+        .about-content {
+          flex-direction: column; /* Stack image and description on smaller screens */
+          align-items: center; /* Center the content vertically */
+          gap: 1rem; /* Reduce space between the image and description */
+        }
+
+        .description-box {
+          max-width: 100%; /* Allow the description box to take up full width on small screens */
+        }
       }
 
       .contact-form input,
@@ -214,7 +275,12 @@
       .fade-in {
         opacity: 0;
         transform: translateY(20px);
-        animation: fadeInUp 0.8s forwards;
+        transition: opacity 1s ease-out, transform 1s ease-out;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       @keyframes fadeInUp {
@@ -225,6 +291,21 @@
         to {
           opacity: 1;
           transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 3rem;
+        }
+
+        .hero p {
+          font-size: 1.2rem;
+        }
+
+        .projects {
+          flex-direction: column;
+          gap: 1rem;
         }
       }
     </style>
@@ -239,15 +320,13 @@
         <a href="#projects">Projects</a>
         <a href="#about">About</a>
         <a href="contact.html">Contact</a>
+        <a href="resume.jpg" target="_blank">Resume</a>
       </nav>
     </header>
 
     <div class="hero">
-      <h1>Hey, I'm Ninad Amane 👋</h1>
-      <p>
-        A 2nd-year AIML student passionate about blockchain, AI, and creative
-        designs!
-      </p>
+      <h1>Hey, I'm Ninad Amane.</h1>
+      <p>I build whatever seems interesting.</p>
       <button onclick="scrollToSection('projects')">Explore My Work</button>
     </div>
 
@@ -255,11 +334,13 @@
       <h2>Projects</h2>
       <div class="projects">
         <div class="project-card">
-          <h3>Blockchain Video Platform</h3>
-          <p>
-            A decentralized platform built during a hackathon to revolutionize
-            video streaming.
-          </p>
+          <a href="https://www.amazon.in/">
+            <h3>Blockchain Video Platform</h3>
+            <p>
+              A decentralized platform built during a hackathon to revolutionize
+              video streaming.
+            </p>
+          </a>
         </div>
         <div class="project-card">
           <h3>Discord Music Bot</h3>
@@ -269,80 +350,76 @@
           </p>
         </div>
         <div class="project-card">
-          <h3>New Project Name</h3>
-          <p>A short description of your new project and what it achieves.</p>
+          <h3>Netflix Clone</h3>
+          <p>A small attempt to create a netflix clone (future)</p>
         </div>
       </div>
     </div>
 
     <div id="about" class="section fade-in">
-      <div id="about" class="section fade-in">
-        <h2>About Me</h2>
-        <p>
-          Hello! I'm Ninad Amane, a passionate B.Tech student specializing in
-          Artificial Intelligence and Machine Learning at BMS Institute,
-          Bangalore. I enjoy exploring the intersection of technology and
-          creativity, and I'm always eager to learn and innovate.I am fluent in
-          5 languages: English Marathi Kannada Hindi and Gujarati. I love
-          collaborating with teams to bring ideas to life and make a positive
-          impact. I'm passionate about AI, blockchain, and creative
-          problem-solving.
-        </p>
-        <div class="social-links">
-          <a
-            href="https://www.linkedin.com/in/ninad-amane-126775290/"
-            target="_blank"
-            class="social-icon"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a
-            href="https://github.com/NinadAmane"
-            target="_blank"
-            class="social-icon"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://x.com/NinadAmane"
-            target="_blank"
-            class="social-icon"
-          >
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/ninad.gg"
-            target="_blank"
-            class="social-icon"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
+      <h2>About Me</h2>
+      <div class="about-content">
+        <div class="about-image">
+          <img src="MyIMAGE.JPG" alt="Ninad Amane" />
+        </div>
+        <div class="description-box">
+          <p>
+            Hello! I'm Ninad Amane, a passionate B.Tech student specializing in
+            Artificial Intelligence and Machine Learning at BMS Institute,
+            Bangalore. I enjoy exploring the intersection of technology and
+            creativity, and I'm always eager to learn and innovate. I am fluent
+            in 5 languages: English, Marathi, Kannada, Hindi, and Gujarati. I
+            love collaborating with teams to bring ideas to life, and I look
+            forward to making an impact in the tech world.
+          </p>
         </div>
       </div>
     </div>
 
+    <div class="section social-links">
+      <a href="https://github.com/NinadAmane" class="social-icon"
+        ><i class="fab fa-github"></i
+      ></a>
+      <a
+        href="https://www.linkedin.com/in/ninad-amane-126775290/"
+        class="social-icon"
+        ><i class="fab fa-linkedin"></i
+      ></a>
+      <a href="https://x.com/NinadAmane" class="social-icon"
+        ><i class="fab fa-twitter"></i
+      ></a>
+      <a href="https://www.instagram.com/ninad.gg/" class="social-icon"
+        ><i class="fab fa-instagram"></i
+      ></a>
+    </div>
+
     <script>
-      function scrollToSection(id) {
-        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      // Smooth scrolling function
+      function scrollToSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        section.scrollIntoView({ behavior: "smooth" });
       }
 
-      // Adding fade-in animation on scroll
-      const sections = document.querySelectorAll(".fade-in");
+      // Fade-in effect for sections
+      document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll(".fade-in");
+        const observer = new IntersectionObserver(
+          (entries, observer) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.5,
+          }
+        );
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
-
-      sections.forEach((section) => {
-        observer.observe(section);
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
       });
     </script>
   </body>
