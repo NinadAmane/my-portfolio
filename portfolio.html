@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- Font Awesome CDN -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <style>
+      body {
+        background: linear-gradient(45deg, #6a0dad, #000, #8000ff);
+        animation: gradient 5s ease infinite;
+        will-change: background; /* Optimize background property */
+        background-attachment: fixed; /* Ensure the background stays fixed while scrolling */
+        background-size: cover;
+        transition: background-color 0.5s ease-in-out;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(to bottom right, #6a0dad, #000);
+        color: white;
+        overflow-x: hidden;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+      }
+
+      header nav {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      header nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      header nav a:hover {
+        color: #a64dff;
+      }
+
+      /* Social media icon styles */
+      .social-links {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .social-icon {
+        font-size: 2rem;
+        color: white;
+        transition: transform 0.3s, color 0.3s;
+      }
+
+      .social-icon:hover {
+        transform: scale(1.2);
+        color: #a64dff; /* Add hover color effect */
+      }
+
+      .social-icon i {
+        transition: transform 0.3s;
+      }
+
+      .social-icon:hover i {
+        transform: rotate(360deg); /* Rotate icons on hover */
+      }
+
+      .hero {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        animation: fadeIn 2s;
+        background: url("https://source.unsplash.com/1920x1080/?technology,abstract")
+          no-repeat center/cover;
+        color: white;
+        box-shadow: inset 0 0 2000px rgba(0, 0, 0, 0.7);
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        margin: 0;
+        animation: bounce 2s infinite;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        margin-top: 1rem;
+        max-width: 700px;
+      }
+
+      .hero button {
+        margin-top: 2rem;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 10px;
+        background: #8000ff;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .hero button:hover {
+        background: #a64dff;
+        transform: scale(1.1);
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .section {
+        padding: 5rem 1rem;
+        text-align: center;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section h2::after {
+        content: "";
+        display: block;
+        width: 60%;
+        height: 4px;
+        background: #a64dff;
+        margin: 0.5rem auto;
+      }
+
+      .projects {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .project-card {
+        width: 300px;
+        padding: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease, background 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .contact-form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      .contact-form input,
+      .contact-form textarea,
+      .contact-form button {
+        width: 100%;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        border: none;
+        border-radius: 5px;
+      }
+
+      .contact-form button {
+        background: #8000ff;
+        color: white;
+        cursor: pointer;
+      }
+
+      .contact-form button:hover {
+        background: #a64dff;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 0.8s forwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <h1>Hey, I'm Ninad Amane 👋</h1>
+      <p>
+        A 2nd-year AIML student passionate about blockchain, AI, and creative
+        designs!
+      </p>
+      <button onclick="scrollToSection('projects')">Explore My Work</button>
+    </div>
+
+    <div id="projects" class="section fade-in">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project-card">
+          <h3>Blockchain Video Platform</h3>
+          <p>
+            A decentralized platform built during a hackathon to revolutionize
+            video streaming.
+          </p>
+        </div>
+        <div class="project-card">
+          <h3>Discord Music Bot</h3>
+          <p>
+            A Python-based bot that enhances Discord interactions with music
+            streaming capabilities.
+          </p>
+        </div>
+        <div class="project-card">
+          <h3>New Project Name</h3>
+          <p>A short description of your new project and what it achieves.</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="about" class="section fade-in">
+      <div id="about" class="section fade-in">
+        <h2>About Me</h2>
+        <p>
+          Hello! I'm Ninad Amane, a passionate B.Tech student specializing in
+          Artificial Intelligence and Machine Learning at BMS Institute,
+          Bangalore. I enjoy exploring the intersection of technology and
+          creativity, and I'm always eager to learn and innovate.I am fluent in
+          5 languages: English Marathi Kannada Hindi and Gujarati. I love
+          collaborating with teams to bring ideas to life and make a positive
+          impact. I'm passionate about AI, blockchain, and creative
+          problem-solving.
+        </p>
+        <div class="social-links">
+          <a
+            href="https://www.linkedin.com/in/ninad-amane-126775290/"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a
+            href="https://github.com/NinadAmane"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-github"></i>
+          </a>
+          <a
+            href="https://x.com/NinadAmane"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a
+            href="https://www.instagram.com/ninad.gg"
+            target="_blank"
+            class="social-icon"
+          >
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function scrollToSection(id) {
+        document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+      }
+
+      // Adding fade-in animation on scroll
+      const sections = document.querySelectorAll(".fade-in");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    </script>
+  </body>
+</html>
