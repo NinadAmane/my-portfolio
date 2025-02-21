@@ -25,21 +25,21 @@
 
       /* Back Button */
       .back-button {
-        background: #8000ff;
-        color: white;
-        padding: 0.75rem 2rem;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background 0.3s ease;
         position: absolute;
-        top: 20px; /* Positioning at the top */
-        left: 20px; /* Positioning on the left */
+        top: 20px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        transition: background 0.3s ease;
       }
 
       .back-button:hover {
-        background: #a64dff;
+        background: rgba(255, 255, 255, 0.3);
       }
 
       .contact-form {
@@ -89,7 +89,19 @@
   </head>
   <body>
     <!-- Back Button -->
-    <button onclick="goBack()" class="back-button">Back to Portfolio</button>
+    <a href="index.html" class="back-button">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="white"
+        width="30"
+        height="30"
+      >
+        <path
+          d="M15.54 3.54a1.5 1.5 0 0 1 0 2.12L9.12 12l6.42 6.34a1.5 1.5 0 1 1-2.12 2.12l-7.5-7.5a1.5 1.5 0 0 1 0-2.12l7.5-7.5a1.5 1.5 0 0 1 2.12 0z"
+        />
+      </svg>
+    </a>
 
     <form class="contact-form">
       <h2>Contact Me</h2>
@@ -109,7 +121,7 @@
       function goBack() {
         document.body.classList.add("fade-out");
         setTimeout(() => {
-          window.location.href = "portfolio.html"; // Navigate to the portfolio page
+          window.location.href = "index.html"; // Navigate to the portfolio page
         }, 500); // Delay to allow the animation to complete
       }
 
